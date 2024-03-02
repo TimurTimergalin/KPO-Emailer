@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Component
 import java.awt.SystemColor
+import java.io.ByteArrayInputStream
 import java.io.File
 
 
@@ -34,8 +35,12 @@ class EmailServiceImpl {
     @Autowired
     private lateinit var emailSender: JavaMailSender
 
-    fun sendSimpleMessage(
-        to: String, subject: String, text: String, filename: String) {
+    @Autowired
+    private lateinit var storageApi: StorageApi
+
+    fun sendMessage(
+        to: String, subject: String, text: String, filename: String
+    ) {
         val message = emailSender.createMimeMessage()
 
         val helper = MimeMessageHelper(message, true)
@@ -43,8 +48,11 @@ class EmailServiceImpl {
         helper.setFrom("com.kpo")
         helper.setTo(to)
         helper.setSubject(subject)
-        val file = FileSystemResource(File(filename))
-        helper.addAttachment("Student list", file)
+//        val file = FileSystemResource(File(filename))
+        val fileData = storageApi.getFile(filename)
+        helper.addAttachment(
+            filename
+        ) { ByteArrayInputStream(fileData.data.toByteArray(Charsets.UTF_8)) }
 
         emailSender.send(message)
     }
