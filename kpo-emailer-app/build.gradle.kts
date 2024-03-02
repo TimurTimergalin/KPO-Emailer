@@ -7,6 +7,7 @@ plugins {
 
 dependencies {
     implementation(project(":kpo-emailer-api"))
+    implementation(project(":kpo-emailer-logic"))
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

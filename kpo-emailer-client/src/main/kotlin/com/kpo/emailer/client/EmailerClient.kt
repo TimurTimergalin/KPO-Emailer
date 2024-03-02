@@ -1,6 +1,6 @@
 package com.kpo.emailer.client
 
-import com.kpo.com.kpo.emailer.api.dto.EmailRequest
+import com.kpo.emailer.api.dto.EmailRequest
 import com.kpo.emailer.api.EmailerApi
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.PostMapping

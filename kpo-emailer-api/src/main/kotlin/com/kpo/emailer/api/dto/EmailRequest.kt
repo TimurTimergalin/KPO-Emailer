@@ -1,8 +1,8 @@
-package com.kpo.com.kpo.emailer.api.dto
+package com.kpo.emailer.api.dto
 
 data class EmailRequest(
-    val receiver: String,
-    val topic: String,
-    val text: String,
-    val filename: String
+    var receiver: String,
+    var topic: String,
+    var text: String,
+    var filename: String
 )

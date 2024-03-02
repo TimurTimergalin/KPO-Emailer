@@ -13,6 +13,6 @@ interface StorageApi {
 @Component
 class StorageApiAdapter: StorageApi {
     override fun getFile(filename: String): StorageApiResponse {
-        TODO("Not yet implemented")
+        return StorageApiResponse("{\"a\": \"b\"}", "json")
     }
 }

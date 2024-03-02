@@ -4,4 +4,5 @@ plugins {
 rootProject.name = "emailer"
 include("kpo-emailer-app")
 include("kpo-emailer-client")
+include("kpo-emailer-logic")
 include("kpo-emailer-api")
